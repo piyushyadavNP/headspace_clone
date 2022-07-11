@@ -6,20 +6,20 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:headspace_clone/views/signup_page.dart';
 import 'package:headspace_clone/widgets/logo_container.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+class Splashscreen extends StatefulWidget {
+  const Splashscreen({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<Splashscreen> createState() => _SplashscreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     Timer(
         Duration(seconds: 2),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const SignUp())));
+            context, MaterialPageRoute(builder: (context) => const Signup())));
     super.initState();
   }
 

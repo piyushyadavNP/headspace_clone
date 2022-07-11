@@ -28,7 +28,9 @@ class LogoName extends StatelessWidget {
             "headspace",
             softWrap: true,
             style: TextStyle(
-                fontSize: textSize, color: Colors.white, fontFamily: 'Apercu'),
+                fontSize: textSize,
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
           ),
         ),
         Text(

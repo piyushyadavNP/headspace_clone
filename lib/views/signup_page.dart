@@ -147,8 +147,11 @@ class _SignupState extends State<Signup> {
                   padding: const EdgeInsets.all(8.0),
                   child: MaterialCommonButton(
                       isImage: true,
-                      image: Image.asset("assets/images/eyeopen.png"),
-                      color: Color.fromARGB(255, 60, 63, 104),
+                      image: Image.asset(
+                        "assets/images/google.png",
+                        height: 30,
+                      ),
+                      color: Colors.white,
                       onTap: () {},
                       size: MediaQuery.of(context).size.width * 0.25),
                 ),
@@ -156,8 +159,11 @@ class _SignupState extends State<Signup> {
                   padding: const EdgeInsets.all(8.0),
                   child: MaterialCommonButton(
                       isImage: true,
-                      image: Image.asset("assets/images/eyeopen.png"),
-                      color: Color.fromARGB(255, 60, 63, 104),
+                      image: Image.asset(
+                        "assets/images/facebook.png",
+                        height: 30,
+                      ),
+                      color: Color(0xff1877F2),
                       onTap: () {},
                       size: MediaQuery.of(context).size.width * 0.25),
                 ),
@@ -165,8 +171,12 @@ class _SignupState extends State<Signup> {
                   padding: const EdgeInsets.all(8.0),
                   child: MaterialCommonButton(
                       isImage: true,
-                      image: Image.asset("assets/images/eyeopen.png"),
-                      color: Color.fromARGB(255, 60, 63, 104),
+                      image: Image.asset(
+                        "assets/images/apple.png",
+                        height: 30,
+                        color: Colors.white,
+                      ),
+                      color: Color.fromARGB(255, 15, 15, 15),
                       onTap: () {},
                       size: MediaQuery.of(context).size.width * 0.25),
                 ),

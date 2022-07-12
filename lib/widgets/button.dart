@@ -4,14 +4,14 @@ class MaterialCommonButton extends StatelessWidget {
   String? text;
   Color? color;
   double size;
-  VoidCallback onTap;
+  VoidCallback? onPressed;
   bool? isImage = false;
   Image? image;
   MaterialCommonButton(
       {Key? key,
       required this.color,
       this.text = "button",
-      required this.onTap,
+      required this.onPressed,
       required this.size,
       required this.isImage,
       this.image})
@@ -29,7 +29,7 @@ class MaterialCommonButton extends StatelessWidget {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 )
               : image,
-          onPressed: onTap,
+          onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             elevation: 10,
             primary: color,

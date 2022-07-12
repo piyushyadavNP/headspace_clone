@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:headspace_clone/views/home_page.dart';
+import 'package:headspace_clone/views/navbar_page.dart';
+import 'package:headspace_clone/views/signup_page.dart';
 import 'package:headspace_clone/views/splash_screen.dart';
 
 void main() {

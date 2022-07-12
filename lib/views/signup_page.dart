@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:headspace_clone/utils/text_style.dart';
+import 'package:headspace_clone/views/login_page.dart';
+import 'package:headspace_clone/views/navbar_page.dart';
 import 'package:headspace_clone/widgets/button.dart';
 import 'package:headspace_clone/widgets/logo_container.dart';
 import 'package:headspace_clone/widgets/textField.dart';
@@ -14,6 +16,14 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  TextEditingController _firstnameController = TextEditingController();
+  TextEditingController _lastnameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _paswordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  bool _isValidate = false;
+  bool formIsValid = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +41,7 @@ class _SignupState extends State<Signup> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 40,
             ),
             Text("Sign Up", style: AppTextStyle.headline2),
             Padding(
@@ -60,7 +70,10 @@ class _SignupState extends State<Signup> {
                         style: AppTextStyle.inkWellLink,
                       ),
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()));
                       },
                     ),
                   ),
@@ -70,25 +83,38 @@ class _SignupState extends State<Signup> {
             SizedBox(
               height: 10,
             ),
-            Button(
-              labelText: "First Name",
-              controller: null,
-              textInputType: TextInputType.name,
-            ),
-            Button(
-              labelText: "Last Name",
-              controller: null,
-              textInputType: TextInputType.name,
-            ),
-            Button(
-              labelText: "Email Address",
-              controller: null,
-              textInputType: TextInputType.emailAddress,
-            ),
-            Button(
-              labelText: "Password",
-              controller: null,
-              textInputType: TextInputType.visiblePassword,
+            Form(
+              key: _formKey,
+              onChanged: () => setState(
+                  () => formIsValid = _formKey.currentState!.validate()),
+              child: Column(
+                children: [
+                  CommonTextField(
+                    // validator: validateButton(_firstnameController.text),
+                    labelText: "First Name",
+                    controller: _firstnameController,
+                    textInputType: TextInputType.name,
+                  ),
+                  CommonTextField(
+                    // validator: validateButton(_lastnameController.text),
+                    labelText: "Last Name",
+                    controller: _lastnameController,
+                    textInputType: TextInputType.name,
+                  ),
+                  CommonTextField(
+                    // validator: validateButton(_emailController.text),
+                    labelText: "Email Address",
+                    controller: _emailController,
+                    textInputType: TextInputType.emailAddress,
+                  ),
+                  CommonTextField(
+                    // validator: validateButton(_paswordController.text),
+                    labelText: "Password",
+                    controller: _paswordController,
+                    textInputType: TextInputType.visiblePassword,
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(9.5),
@@ -118,7 +144,11 @@ class _SignupState extends State<Signup> {
                 isImage: false,
                 color: Colors.blue,
                 text: "Create an account",
-                onTap: () {},
+                onPressed: _isValidate
+                    ? () {
+                        print("Valid");
+                      }
+                    : null,
                 size: MediaQuery.of(context).size.width * 0.9),
             SizedBox(
               height: 15,
@@ -127,10 +157,15 @@ class _SignupState extends State<Signup> {
                 isImage: false,
                 color: Color.fromARGB(255, 60, 63, 104),
                 text: "Create with SSO",
-                onTap: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainPage()));
+                },
                 size: MediaQuery.of(context).size.width * 0.9),
             Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+              padding: const EdgeInsets.only(top: 30.0),
               child: Text(
                 textAlign: TextAlign.center,
                 "Link an account to log in faster in the future",
@@ -152,7 +187,7 @@ class _SignupState extends State<Signup> {
                         height: 30,
                       ),
                       color: Colors.white,
-                      onTap: () {},
+                      onPressed: () {},
                       size: MediaQuery.of(context).size.width * 0.25),
                 ),
                 Padding(
@@ -164,7 +199,7 @@ class _SignupState extends State<Signup> {
                         height: 30,
                       ),
                       color: Color(0xff1877F2),
-                      onTap: () {},
+                      onPressed: () {},
                       size: MediaQuery.of(context).size.width * 0.25),
                 ),
                 Padding(
@@ -177,7 +212,7 @@ class _SignupState extends State<Signup> {
                         color: Colors.white,
                       ),
                       color: Color.fromARGB(255, 15, 15, 15),
-                      onTap: () {},
+                      onPressed: () {},
                       size: MediaQuery.of(context).size.width * 0.25),
                 ),
               ],
@@ -186,5 +221,12 @@ class _SignupState extends State<Signup> {
         ),
       ),
     );
+  }
+
+  validateButton(value) {
+    if (value == null || value.isEmpty) {
+      return 'Please Enter Some Text';
+    }
+    return null;
   }
 }

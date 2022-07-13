@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:headspace_clone/utils/custom_clipper.dart';
 import 'package:headspace_clone/views/meditate_page.dart';
 
 import '../misc/app_colors.dart';

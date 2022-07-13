@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:headspace_clone/misc/app_colors.dart';
-import 'package:headspace_clone/views/meditate_page.dart';
+
+import '../utils/custom_clipper.dart';
 
 class Movepage extends StatefulWidget {
   const Movepage({Key? key}) : super(key: key);

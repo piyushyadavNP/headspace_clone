@@ -21,6 +21,7 @@ class _MeditatepageState extends State<Meditatepage>
   ScrollController scrollController = ScrollController();
   @override
   void initState() {
+    scrollController;
     TabController tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
